@@ -56,12 +56,28 @@ def detect_exclude_vowels(input): # DO-NOT CHANGE NAME OF THE FUNCTION
 
   return filtered_words # Update this  function according to the tasks.
 
-input_text = "Here are some words: tree, cat, apple, dog, cup, fantastic."
-result = detect_exclude_vowels(input_text)
-print("Words with less than 5 non-vowel letters:", result)
+#input_text = "Here are some words: tree, cat, apple, dog, cup, fantastic."
+#result = detect_exclude_vowels(input_text)
+#print("Words with less than 5 non-vowel letters:", result)
 
 def special_ordering(input): # DO-NOT CHANGE NAME OF THE FUNCTION
-  return None # Update this  function according to the tasks.
+
+  # Split the text into words based on whitespace
+  words = input.split()
+
+  # Perform selection sort on the list of words based on the second letter
+  for i in range(len(words)):
+      min_index = i
+      min_char = words[i][1] if len(words[i]) > 1 else '\uffff'
+      for j in range(i + 1, len(words)):
+          current_char = words[j][1] if len(words[j]) > 1 else '\uffff'
+          if current_char < min_char:
+              min_index = j
+              min_char = current_char
+
+      # Swap the found minimum element with the first element
+      words[i], words[min_index] = words[min_index], words[i]
+  return words # Update this  function according to the tasks.
 
 def remember_previous(input): # DO-NOT CHANGE NAME OF THE FUNCTION
   return None # Update this  function according to the tasks.
