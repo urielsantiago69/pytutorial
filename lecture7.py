@@ -24,3 +24,46 @@ def abs(x):
 # otherwise, return x. test with 2, returns 2 as expected
 # every branch of the conditional is covered, we are path complete
 # however abs (-1) incorrectly returns -1
+
+#exception handling
+def sample_exception():
+try:
+  a = int(input("Enter a number: "))
+  b = int(input("Enter another number: "))
+  print(a/b)
+except:
+  print("Bug in user input")
+
+
+def sample_exception2():
+try:
+  a = int(input("Enter a number: "))
+  b = int(input("Enter another number: "))
+  print(a/b)
+  print(a+b)
+except ValueError:
+  print("Could not convert to a number")
+except ZeroDivisionError:
+print("Could not convert to a number")
+except:
+  print("Something really went wrong")
+
+
+def get_ratios(L1, L2):
+    """ Assumes: L1 and L2 are lists of equal length of numbers
+        Returns: a list containing L1[i]/L2[i] """
+    ratios = []
+    for index in range(len(L1)):
+        try:
+            ratios.append(L1[index]/L2[index])
+        except ZeroDivisionError:
+            ratios.append(float('nan')) #nan = Not a Number
+        except:
+            raise ValueError('get_ratios called with bad arg')
+        else:
+            print("success")
+        finally:
+            print("executed no matter what!")
+    return ratios
+
+print(get_ratios([1, 4], [2, 4]))
